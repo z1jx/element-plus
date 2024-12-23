@@ -18,14 +18,26 @@
 </template>
 
 <script lang="ts" setup>
+  import { ElMessage, ElMessageBox } from 'element-plus'
 const handleClick = () => {
-  console.log('click')
+  console.log('click1')
+  ElMessageBox.alert('This is a message', 'Title', {
+    // if you want to disable its autofocus
+    // autofocus: false,
+    confirmButtonText: 'OK',
+    callback: (action: Action) => {
+      ElMessage({
+        type: 'info',
+        message: `action: ${action}`,
+      })
+    },
+  })
 }
 
 const tableData = [
   {
     date: '2016-05-03',
-    name: 'Tom',
+    name: 'Tom1',
     state: 'California',
     city: 'Los Angeles',
     address: 'No. 189, Grove St, Los Angeles',
